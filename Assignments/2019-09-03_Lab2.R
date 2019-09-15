@@ -72,7 +72,7 @@ ggplot(data)+
 # Enter your code below
 data2<-read_csv("datasets/quinn/chpt2/lovett.csv",col_names = TRUE,
                col_types = cols(
-                 STREAM = col_character() )
+  STREAM = col_character() )
 )
 
 
