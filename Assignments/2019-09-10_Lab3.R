@@ -64,7 +64,7 @@ View(summ_eggs)
 # <mathematical_function>(<variable_name>))
 ward<-mutate(ward, squareroot_eggs = sqrt(EGGS))
 
-compensation<-mutate(compensation, log(Root)
+ward<-mutate(ward, log_eggs = log(EGGS))
 
 # R for Data Science, Chapter 3
 # https://r4ds.had.co.nz/data-visualisation.html
@@ -112,13 +112,13 @@ summ_density <- sanchez %>%
             sd_density = sd(density),
             var_density = var(density))
 
-
+View(summ_density)
 
 
 
 # Add a new column of log(y+1) transformed beetle densities to the sanchez dataset
 # Enter your code here
-
+sanchez<-mutate(sanchez, log1p_density = log1p(density))
 
 
 
