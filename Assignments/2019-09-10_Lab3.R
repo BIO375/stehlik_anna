@@ -64,7 +64,7 @@ View(summ_eggs)
 # <mathematical_function>(<variable_name>))
 ward<-mutate(ward, squareroot_eggs = sqrt(EGGS))
 
-compensation<-mutate(compensation, log(Root)
+compensation<-mutate(compensation, log_Root = log(Root))
 
 # R for Data Science, Chapter 3
 # https://r4ds.had.co.nz/data-visualisation.html
@@ -126,7 +126,12 @@ sanchez<-mutate(sanchez, log1p_density = log1p(density))
 # Generate histograms of beetle density by colony type before and after data 
 # transformation
 # Enter your code here
-
+ggplot(sanchez) +
+  geom_histogram(aes(density), binwidth = 20)+
+  facet_wrap(~type_of_colony)
+ggplot(sanchez) +
+  geom_histogram(aes(log1p_density), binwidth = 0.5)+
+  facet_wrap(~type_of_colony)
 
 
 
@@ -134,4 +139,8 @@ sanchez<-mutate(sanchez, log1p_density = log1p(density))
 # Plot boxplots of beetle density by colony type before and after data 
 # transformation
 # Enter your code here
+ggplot(sanchez)+
+  geom_boxplot(aes(x = type_of_colony, y = density), notch = FALSE, varwidth = TRUE)
+ggplot(sanchez)+
+  geom_boxplot(aes(x = type_of_colony, y = log1p_density), notch = FALSE, varwidth = TRUE)
 
