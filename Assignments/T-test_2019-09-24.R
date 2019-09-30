@@ -1,8 +1,9 @@
+rm(list = ls())
+getwd()
 library("tidyverse")
 tidyverse_update()
 birth_rates<-read_csv("datasets/demos/birth_rates.csv")
 summ_Diff <- birth_rates %>%
-  group_by() %>% 
   summarise(n_Diff = n(),
             mean_Diff = mean(Diff),
             median_Diff = median(Diff),
@@ -11,8 +12,9 @@ summ_Diff <- birth_rates %>%
             var_Diff = var(Diff))
 View(summ_Diff)
 ggplot(birth_rates) +
-  geom_histogram(aes(Diff), binwidth = 20)+
-  facet_wrap(~1)
+  geom_histogram(aes(Diff), binwidth = 1)
+ggplot(birth_rates)+
+  geom_boxplot(aes(x = "", y = Diff), notch = FALSE, varwidth = TRUE)
 
 library(readr)
 data01 <- read_csv("datasets/abd/chapter12/chap12e3HornedLizards.csv")
