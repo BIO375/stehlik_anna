@@ -32,3 +32,5 @@ View(summ_squamosalHornLength)
 ggplot(data01) +
   geom_histogram(aes(squamosalHornLength), binwidth = 1)+
   facet_wrap(~Survival)
+ggplot(data01)+
+  geom_boxplot(aes(x = Survival, y = squamosalHornLength), notch = FALSE, varwidth = TRUE)
