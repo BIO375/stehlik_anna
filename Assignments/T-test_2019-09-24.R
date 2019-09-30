@@ -2,7 +2,7 @@ library("tidyverse")
 tidyverse_update()
 birth_rates<-read_csv("datasets/demos/birth_rates.csv")
 summ_Diff <- birth_rates %>%
-  group_by(Country) %>% 
+  group_by() %>% 
   summarise(n_Diff = n(),
             mean_Diff = mean(Diff),
             median_Diff = median(Diff),
@@ -10,7 +10,9 @@ summ_Diff <- birth_rates %>%
             sd_Diff = sd(Diff),
             var_Diff = var(Diff))
 View(summ_Diff)
-
+ggplot(birth_rates) +
+  geom_histogram(aes(Diff), binwidth = 20)+
+  facet_wrap(~1)
 
 library(readr)
 data01 <- read_csv("datasets/abd/chapter12/chap12e3HornedLizards.csv")
