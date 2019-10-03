@@ -57,3 +57,13 @@ ggplot(HeartAttack_short)+
   geom_qq(aes(sample = cholest, color = group))
 t.test(cholest ~ group, data = HeartAttack_short, var.equal = TRUE, alternative = "two.sided", conf.level = 0.95)
 t.test(cholest ~ group, data = HeartAttack_short, alternative = "two.sided", conf.level = 0.95)
+
+#Question 3
+rm(list = ls())
+getwd()
+library("tidyverse")
+tidyverse_update()
+library("DescTools")
+library(readr)
+furness <- read_csv("datasets/quinn/chpt3/furness.csv")
+View(furness)
