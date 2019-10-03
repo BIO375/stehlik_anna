@@ -40,10 +40,20 @@ library("tidyverse")
 tidyverse_update()
 library("DescTools")
 library(readr)
-HeartAttack_short <- read_csv("datasets/demos/HeartAttack_short.csv")
+HeartAttack_short <- read_csv("datasets/demos/HeartAttack_short.csv",col_names = TRUE,col_types = cols(group = col_character()) )
 View(HeartAttack_short)
 summ_cholest <- HeartAttack_short %>%
   group_by(group) %>% 
   summarise(mean_cholest = mean(cholest),
             sd_cholest = sd(cholest),
             n_cholest = n())
+ratio <-(max(summ_cholest$sd_cholest))/(min(summ_cholest$sd_cholest))
+ggplot(HeartAttack_short) +
+  geom_histogram(aes(cholest), binwidth = 20)+
+  facet_wrap(~group)
+ggplot(HeartAttack_short) +
+  geom_boxplot(aes(x = group, y = cholest))
+ggplot(HeartAttack_short)+
+  geom_qq(aes(sample = cholest, color = group))
+t.test(cholest ~ group, data = HeartAttack_short, var.equal = TRUE, alternative = "two.sided", conf.level = 0.95)
+t.test(cholest ~ group, data = HeartAttack_short, alternative = "two.sided", conf.level = 0.95)
