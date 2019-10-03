@@ -67,3 +67,21 @@ library("DescTools")
 library(readr)
 furness <- read_csv("datasets/quinn/chpt3/furness.csv")
 View(furness)
+ggplot(furness) +
+  geom_histogram(aes(METRATE), binwidth = 100)+
+  facet_wrap(~SEX)
+ggplot(furness) +
+  geom_boxplot(aes(x = SEX, y = METRATE))
+ggplot(furness)+
+  geom_qq(aes(sample = METRATE, color = SEX))
+wilcox.test(METRATE ~ SEX, data = furness, alternative = "two.sided", conf.level = 0.95)
+
+#Question 4
+rm(list = ls())
+getwd()
+library("tidyverse")
+tidyverse_update()
+library("DescTools")
+library(readr)
+elgar <- read_csv("datasets/quinn/chpt3/elgar.csv")
+View(elgar)
