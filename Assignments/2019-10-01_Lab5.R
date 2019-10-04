@@ -83,5 +83,15 @@ library("tidyverse")
 tidyverse_update()
 library("DescTools")
 library(readr)
-elgar <- read_csv("datasets/quinn/chpt3/elgar.csv")
-View(elgar)
+untidy_elgar <- read_csv("datasets/quinn/chpt3/elgar.csv")
+View(untidy_elgar)
+untidy_elgar <- mutate(untidy_elgar, diff = HORIZDIM - HORIZLIG)
+ggplot(untidy_elgar) +
+  geom_histogram(aes(diff), binwidth = 14)
+ggplot(untidy_elgar) +
+  geom_boxplot(aes(x = "", y = diff))
+ggplot(untidy_elgar)+
+  geom_qq(aes(sample = diff))
+t.test(untidy_elgar$HORIZDIM, untidy_elgar$HORIZLIG, 
+       alternative = "two.sided", paired = TRUE, conf.level = 0.95)
+
