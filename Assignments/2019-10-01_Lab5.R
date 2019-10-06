@@ -55,7 +55,6 @@ ggplot(HeartAttack_short) +
   geom_boxplot(aes(x = group, y = cholest))
 ggplot(HeartAttack_short)+
   geom_qq(aes(sample = cholest, color = group))
-t.test(cholest ~ group, data = HeartAttack_short, var.equal = TRUE, alternative = "two.sided", conf.level = 0.95)
 t.test(cholest ~ group, data = HeartAttack_short, alternative = "two.sided", conf.level = 0.95)
 
 #Question 3
