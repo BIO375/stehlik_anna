@@ -78,4 +78,8 @@ sample_sd <- 3.556961
 sample_n <- 36
 df <- sample_n -1
 t_sample <- (sample_mean - null_mean)/(sample_sd/sqrt(sample_n))
-two_tailed <- 2*(1-pt(abs(t_sample), df))
+negative_tail <- pt(t_sample, df)
+
+#Answer
+#There was not a significant difference observed in change in biomass of rainforests following clear-cutting.
+#(One-sample one-sided t-test: t35=-0.85, p>0.05).
