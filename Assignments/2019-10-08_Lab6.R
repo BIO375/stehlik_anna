@@ -1,3 +1,5 @@
+####Answers and Code for Lab 6 Problems (Chapter 13 Problems 20, 25, 26, and Review Problem 16)
+
 # Clean up the working environment
 rm(list = ls())
 # Verify working directory, should be ~/Documents/Analyses/lastname_first
@@ -83,3 +85,55 @@ negative_tail <- pt(t_sample, df)
 #Answer
 #There was not a significant difference observed in change in biomass of rainforests following clear-cutting.
 #(One-sample one-sided t-test: t35=-0.85, p>0.05).
+
+#Question 26####
+rm(list = ls())
+getwd()
+library("tidyverse")
+tidyverse_update()
+library("DescTools")
+library(readr)
+FinchBeaks <- read_csv("datasets/abd/chapter13/chap13q26ZebraFinchBeaks.csv")
+View(FinchBeaks)
+ggplot(FinchBeaks) +
+  geom_histogram(aes(preference), binwidth = 2)
+#We would use a type of one-sample t-test in this question because the data we are given is for the 
+#percentage of time that the females sat next to the carotenoid-supplemented male. 
+#We would further specify and use a one-sample SIGN test because the data (as shown by the histogram) are not normally distributed.
+#It skews to the left. I am using one-sided because we hypothesises that the females will spend more time next to the  high-carotenoid males.
+SignTest(FinchBeaks$preference, 
+         alternative = "greater", mu = 0, conf.level = 0.95)
+#There is a significant difference. Females prefer the carotenoid-supplemented males. 
+
+#Quesetion 16####
+rm(list = ls())
+getwd()
+library("tidyverse")
+tidyverse_update()
+library("DescTools")
+library(readr)
+FishBoldness <- read_csv("datasets/abd/chapter03/chap03q22ZebraFishBoldness.csv")
+View(FishBoldness)
+summ_secondsAggressiveActivity <- FishBoldness %>%
+  group_by(genotype) %>% 
+  summarise(mean_secondsAggressiveActivity = mean(secondsAggressiveActivity),
+            sd_secondsAggressiveActivity = sd(secondsAggressiveActivity),
+            n_secondsAggressiveActivity = n(),
+            var_secondsAggressiveActivity = var(secondsAggressiveActivity))
+ratio <-(max(summ_secondsAggressiveActivity$sd_secondsAggressiveActivity))/(min(summ_secondsAggressiveActivity$sd_secondsAggressiveActivity))
+#A.)Ratio is less than 3 so assumption is met so variances are not significantly different. 
+
+#B.) #Mann-Whitney U-test is best to use here because we need something that does not assume normal distribution (see the plots below) but that does still assume equal variance. 
+ggplot(FishBoldness) +
+  geom_histogram(aes(secondsAggressiveActivity), binwidth = 20)+
+  facet_wrap(~genotype)
+
+ggplot(FishBoldness) +
+  geom_boxplot(aes(x = genotype, y = secondsAggressiveActivity))
+
+ggplot(FishBoldness)+
+  geom_qq(aes(sample = secondsAggressiveActivity, color = genotype))
+#Not normally distributed. These suggest that Spd mutant fish spent more time in aggressive behavior than wild-type fish.
+#We do a two-sided test because it is never specified in the test whether a certain trend was expected.
+wilcox.test(secondsAggressiveActivity ~ genotype, data = FishBoldness, alternative = "two.sided", conf.level = 0.95)
+#The weight of evidence is 90 that the effect is not zero. This tells us that there is a signifficant difference between the seconds of aggressive activity between the Spd mutant fishes and the wild-type fishes. 
