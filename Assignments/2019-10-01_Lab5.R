@@ -33,6 +33,8 @@ two_tailed <- 2*(1-pt(abs(t_sample), df))
 t.test(obliquity_data$Obliquity, 
        alternative = "two.sided", mu = 0, conf.level = 0.95)
 
+### MU SHOULD BE SAME AS NULL MEAN
+
 #Question 2
 rm(list = ls())
 getwd()
