@@ -41,7 +41,7 @@ autoplot(model01)
 Jaffe<-mutate(Jaffe, log10_Aldrin = log10(Aldrin))
 
 model02 <- lm(log10_Aldrin~Depth, data = Jaffe)
-
+autoplot(model02)
 anova(model02)
 summary(model02)
 
