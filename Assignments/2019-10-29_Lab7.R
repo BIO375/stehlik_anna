@@ -10,7 +10,6 @@ tidyverse_update()
 #Question 1#
 
 library(readr)
-library(readr)
 Jaffe <- read_csv("datasets/demos/Jaffe.csv")
 View(Jaffe)
 Jaffe <-read_csv("datasets/demos/Jaffe.csv", col_types = cols(
@@ -45,3 +44,29 @@ model02 <- lm(log10_Aldrin~Depth, data = Jaffe)
 
 anova(model02)
 summary(model02)
+
+ggplot(Jaffe, aes(x = Depth, y = HCB))+
+  geom_boxplot() +
+  theme_bw() +
+  coord_flip()
+ggplot(Jaffe) +
+  geom_histogram(aes(HCB), binwidth = 1)+
+  facet_wrap(~Depth)
+ggplot(Jaffe)+
+  geom_qq(aes(sample = HCB, color = Depth))
+
+model03 <- lm(HCB~Depth, data = Jaffe)
+
+summ_HCB <- Jaffe %>%
+  group_by(Depth) %>% 
+  summarise(mean_HCB = mean(HCB),
+            sd_HCB = sd(HCB),
+            n_HCB = n())
+ratio <-(max(summ_HCB$sd_HCB))/(min(summ_HCB$sd_HCB))
+autoplot(model03)
+anova(model03)
+summary(model03)
+
+
+tukey <- glht(model02, linfct = mcp(Depth = "Tukey"))
+summary(tukey)
