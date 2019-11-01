@@ -37,6 +37,8 @@ summ_Aldrin <- Jaffe %>%
             n_Aldrin = n())
 ratio <-(max(summ_Aldrin$sd_Aldrin))/(min(summ_Aldrin$sd_Aldrin))
 autoplot(model01)
+anova(model01)
+summary(model01)
 
 Jaffe<-mutate(Jaffe, log10_Aldrin = log10(Aldrin))
 
@@ -50,14 +52,15 @@ summ_log10_Aldrin <- Jaffe %>%
             sd_log10_Aldrin = sd(log10_Aldrin),
             n_log10_Aldrin = n())
 ratio <-(max(summ_log10_Aldrin$sd_log10_Aldrin))/(min(summ_log10_Aldrin$sd_log10_Aldrin))
-autoplot(model01)
+autoplot(model02)
 
+#HCB Data#
 ggplot(Jaffe, aes(x = Depth, y = HCB))+
   geom_boxplot() +
   theme_bw() +
   coord_flip()
 ggplot(Jaffe) +
-  geom_histogram(aes(HCB), binwidth = 1)+
+  geom_histogram(aes(HCB), binwidth = 0.2)+
   facet_wrap(~Depth)
 ggplot(Jaffe)+
   geom_qq(aes(sample = HCB, color = Depth))
