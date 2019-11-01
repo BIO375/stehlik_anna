@@ -44,6 +44,13 @@ model02 <- lm(log10_Aldrin~Depth, data = Jaffe)
 autoplot(model02)
 anova(model02)
 summary(model02)
+summ_log10_Aldrin <- Jaffe %>%
+  group_by(Depth) %>% 
+  summarise(mean_log10_Aldrin = mean(log10_Aldrin),
+            sd_log10_Aldrin = sd(log10_Aldrin),
+            n_log10_Aldrin = n())
+ratio <-(max(summ_log10_Aldrin$sd_log10_Aldrin))/(min(summ_log10_Aldrin$sd_log10_Aldrin))
+autoplot(model01)
 
 ggplot(Jaffe, aes(x = Depth, y = HCB))+
   geom_boxplot() +
