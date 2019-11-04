@@ -70,3 +70,5 @@ ggplot(CO2levels)+
 
 t.test(growth_rate ~ treatment, data = CO2levels, var.equal = TRUE, alternative = "two.sided", conf.level = 0.95)
 
+
+#### CODE RUNS WITHOUT BREAKING 6/6 PTS, GOOD JOB ####
