@@ -155,6 +155,7 @@ summ_bodyTemperature <- Crabs %>%
             n_bodyTemperature = n())
 ratio <-(max(summ_bodyTemperature$sd_bodyTemperature))/(min(summ_bodyTemperature$sd_bodyTemperature))
 #equal variance
+
 autoplot(model01)
 anova(model01)
 summary(model01)
