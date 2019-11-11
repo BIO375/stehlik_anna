@@ -10,7 +10,9 @@ library(readr)
 WalkingStickHeads<- read_csv("datasets/abd/chapter15/chap15q22WalkingStickHeads.csv", 
                              col_types = cols(specimen = col_factor() ) )
 View(WalkingStickHeads)
-#a# random effects ANOVA
+#a# Random-effects ANOVA. We do a random-effects ANOVA here because because there are
+  #not predetermined groups of the explanatory variable (specimen in this case). The specimens
+  #are not organized into groups in any way but instead are just labeled 1 through 25.
 head(WalkingStickHeads)
 summary(WalkingStickHeads)
 
@@ -38,7 +40,6 @@ repeatability
 #d# Femur length has higher repeatability (74%, compared to 59.7% for head width). 
  # The measurement error for head width is 0.01% and it is 0.03% for femur length.
  # Femur length is more affected by measurement error. 
-
 
 ####Problem 15-23####
 #a# Planned comparison one-way ANOVA
