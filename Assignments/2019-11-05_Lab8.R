@@ -42,7 +42,9 @@ repeatability
  # Femur length is more affected by measurement error. 
 
 ####Problem 15-23####
-#a# Planned comparison one-way ANOVA
+#a# Planned comparison one-way ANOVA because the groups we want to compare are identified
+  #before doing an analysis. There are three habitat types but we just want to compare
+  #island.absent with island.present. 
 rm(list = ls())
 getwd()
 library("ggfortify")
@@ -81,7 +83,7 @@ planned <- glht(model01, linfct =
                   mcp(habitat = c("island.present - island.absent = 0")))
 confint(planned)
 summary(planned)
-
+#Pinecone mass is significantly greater on islands where squirrels are absent(Planned comparison one-way ANOVA: t9=-8.596,p<0.0001). 
 
 ####Problem 15-26####
 rm(list = ls())
@@ -118,11 +120,13 @@ ratio <-(max(summ_logSporozoiteNumbers$sd_logSporozoiteNumbers))/(min(summ_logSp
 autoplot(model01)
 anova(model01)
 summary(model01)
-#tukey because 3 is more than p-1
+#tukey because we reject the null that all means are equal and now we want to see which means 
+  #are significantly different from each other. Tukey also reduces the chance of committing a
+  #type 1 error.
 tukey <- glht(model01, linfct = mcp(treatmentGroup = "Tukey"))
 summary(tukey)
-
-
+#There are significantly lower sporozoite numbers in the control group and wild type group when 
+  #they were infected with scorpine.
 
 ####Problem 15-30####
 rm(list = ls())
@@ -155,8 +159,16 @@ summ_bodyTemperature <- Crabs %>%
             sd_bodyTemperature = sd(bodyTemperature),
             n_bodyTemperature = n())
 ratio <-(max(summ_bodyTemperature$sd_bodyTemperature))/(min(summ_bodyTemperature$sd_bodyTemperature))
-#equal variance
+#equal variance and normal distribution, so normal one-way ANOVA.
 
 autoplot(model01)
 anova(model01)
 summary(model01)
+#Groups we are interested in comparing are not explicitely predetermined, so Tukey test. 
+tukey <- glht(model01, linfct = mcp(crabType = "Tukey"))
+summary(tukey)
+#Female rate of heat gain is significantly greater than male heat gain, regardless of whether
+  #the male is intact or has major or minor removed. 
+#Males with major removed had significantly greater rate of heat gain than males with minor removed
+  #(tukey-Kramer test: t40=3.187, P=0.0108).
+
