@@ -1,9 +1,6 @@
 rm(list = ls())
-getwd()
-library("tidyverse")
-tidyverse_update()
-library("DescTools")
-library(readr)
+library(ggfortify)
+library(tidyverse)
 peake <- read_csv("datasets/demos/peake.csv")
 View(peake)
 
