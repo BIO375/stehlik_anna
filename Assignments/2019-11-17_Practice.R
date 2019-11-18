@@ -11,7 +11,7 @@ model01 <-lm(SPECIES ~ AREA, data = peake)
 autoplot(model01)
 ggplot(data = peake)+
   geom_point(aes(x = AREA, y = SPECIES))
-#Mutate#
+#Transform#
 peake <- peake %>%
   mutate(log10area = log10(AREA))
 ggplot(data = peake)+
