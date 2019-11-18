@@ -170,5 +170,5 @@ summary(tukey)
 #Female rate of heat gain is significantly greater than male heat gain, regardless of whether
   #the male is intact or has major or minor removed. 
 #Males with major removed had significantly greater rate of heat gain than males with minor removed
-  #(tukey-Kramer test: t40=3.187, P=0.0108).
+  #(tukey-Kramer test: t40=3.187, P=0.0108). 
 
