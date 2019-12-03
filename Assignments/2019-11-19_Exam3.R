@@ -69,3 +69,5 @@ autoplot(model01, smooth.colour = NA)
 ggplot(data = DriverVision)+
   geom_point(aes(x = Age, y = Distance))
 summary(model01)
+
+#### Code runs perfectly 5/5 ####
