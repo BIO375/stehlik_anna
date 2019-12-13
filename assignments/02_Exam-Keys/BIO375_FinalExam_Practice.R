@@ -136,7 +136,7 @@ ggplot(nsd)+
 t.test(nsd$injuriesBeforeNSD, nsd$injuriesOnNSD, 
        alternative = "less", paired =  TRUE, conf.level = 0.95)
 
-# (vi)
+[[# (vi)
 # There were significantly more injuries on No Smoking Day than on the previous Wednesday
 # (paired, one-sided t-test: t = -2.447, df = 9, p < 0.05).
 
