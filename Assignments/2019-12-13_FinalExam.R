@@ -35,7 +35,12 @@ library(readr)
 caffeine <- read_csv("datasets/final/caffeine.csv")
 caffeine <-read_csv("datasets/final/caffeine.csv", col_types = cols(
   group = col_factor() ))
+
 View(caffeine)
+
+
+
+
 head(caffeine)
 summary(caffeine)
 ggplot(caffeine, aes(x = group, y = half_life))+
@@ -88,3 +93,5 @@ davis_summ <- add_column(davis_summ, expected= c(0.030,0.018,0.156,0.319,0.423,0
 
 model03 <-chisq.test(x = davis_summ$race_ethn_n, p = davis_summ$expected_p)
 model03
+
+#### 10/10 code runs without breaking ####

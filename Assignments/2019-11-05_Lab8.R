@@ -172,3 +172,4 @@ summary(tukey)
 #Males with major removed had significantly greater rate of heat gain than males with minor removed
   #(tukey-Kramer test: t40=3.187, P=0.0108). 
 
+#### 26/26 code runs without breaking ####

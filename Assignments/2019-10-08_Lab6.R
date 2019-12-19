@@ -137,3 +137,7 @@ ggplot(FishBoldness)+
 #We do a two-sided test because it is never specified in the test whether a certain trend was expected.
 wilcox.test(secondsAggressiveActivity ~ genotype, data = FishBoldness, alternative = "two.sided", conf.level = 0.95)
 #The weight of evidence is 90 that the effect is not zero. This tells us that there is a signifficant difference between the seconds of aggressive activity between the Spd mutant fishes and the wild-type fishes. 
+
+
+# Q20, missing t-test on transformed data
+# 23/24 pts ####

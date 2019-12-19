@@ -34,3 +34,5 @@ ggplot(data01) +
   facet_wrap(~Survival)
 ggplot(data01)+
   geom_boxplot(aes(x = Survival, y = squamosalHornLength), notch = FALSE, varwidth = TRUE)
+
+#### 10/10 code runs without breaking ####

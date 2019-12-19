@@ -96,3 +96,4 @@ ggplot(untidy_elgar)+
 t.test(untidy_elgar$HORIZDIM, untidy_elgar$HORIZLIG, 
        alternative = "two.sided", paired = TRUE, conf.level = 0.95)
 
+#### 10/10 code runs without breaking ####
